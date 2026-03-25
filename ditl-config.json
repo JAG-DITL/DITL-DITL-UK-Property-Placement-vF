@@ -1,0 +1,1578 @@
+{
+  "meta": {
+    "org": "Gallagher Re · Fac Technology Transformation",
+    "title": "A Day in the Life: UK Property Placement",
+    "subtitle": "Walk through each of the 13 workflow stages from your perspective — from case creation through transition to servicing. See today’s pain, the future experience, what you do, what’s automated, and how data flows across the end-to-end placement lifecycle.",
+    "facilitationGuide": "For each stage: (1) Start with 🔴 Today’s Reality — validate the pain points. (2) Switch to 🟢 Future Experience — is this the right vision? (3) Review ✋ My Actions — what’s missing? (4) Check ⚡ Workflow Automates — is the automation level right? (5) Review 📊 Data Domains and 🖥️ Systems — are these correct? Use 👥 Other Performers to confirm team interactions.",
+    "sourceData": "Current-state step counts from Gallagher program context. Future-state from UK Property Placement Future State V2 process maps, E2E Workflow Stage Diagrams, and Workflow Engine Proposed Stages (13-stage model, March 2026). Data domains from Data Flow End to End workbook (Sheet 2: UK Property Placement). Systems from As-Is Redesign and Future State diagrams. Process step counts based on Future State and Redesign process maps (not based on detailed tasks)."
+  },
+  "personas": {
+    "broker": {
+      "name": "Broker: Sarah Mitchell (composite persona)",
+      "sub": "Senior Property Broker, UK Fac",
+      "col": "#1B4965",
+      "acc": "#62B6CB",
+      "bg": "#E8F4F8",
+      "ic": "👤",
+      "ctx": "Sarah manages a portfolio with multiple UK property cedants. Her priority is delivering fast, high‑quality market engagement for her clients while preserving strong relationships and competitive outcomes; her day revolves around Outlook, client calls, yet today she is weighed down by fragmented systems, repeated data entry, and manual tracking. She is frustrated by administrative tasks that dilute her broking time, and welcomes tools that remove friction without adding extra clicks."
+    },
+    "support": {
+      "name": "Broker Support: James Chen (composite persona)",
+      "sub": "Broker Support Analyst",
+      "col": "#5B2C6F",
+      "acc": "#AF7AC5",
+      "bg": "#F4ECF7",
+      "ic": "🛠️",
+      "ctx": "James focuses on data accuracy, compliance evidence, and smooth system handoffs, but today spends much of his time performing triple data entry, assembling documents manually, and chasing missing information. He wants structured workflows that allow him to act as a quality‑assurance specialist rather than a data‑entry operator."
+    }
+  },
+  "phases": [
+    {
+      "name": "Submission",
+      "col": "#1B4965",
+      "stages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "Draft Slip Creation",
+      "col": "#2E7D32",
+      "stages": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Final Slip & Binding",
+      "col": "#E65100",
+      "stages": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "Post Bind",
+      "col": "#6A1B9A",
+      "stages": [
+        11,
+        12,
+        13
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": 1,
+      "name": "Case Creation & Data Intake",
+      "code": "WF-01",
+      "currentPain": {
+        "broker": {
+          "story": "Sarah opens an email from her cedant with a renewal submission -  a PDF, two spreadsheets, and a loss history screenshot pasted into the email body. She opens WIN to check the opportunity pipeline, then switches to the team's Pipeline List .xls to enter details, then back to email to forward everything to Broker Support. She saves the email in her email filing structure. If modelling was needed, she triggers the request to the modeling team and have to wait for Cat Analytics to return their output, then manually saves the modelling files alongside the submission. Plenty of admin time, zero broking.",
+          "pains": [
+            "Manual data entry into personal Pipeline List .xls tracker — disconnected from WIN",
+            "Weekly review of Pipeline List .xls to track submissions — no real-time visibility",
+            "Submission pack arrives in varied formats (email body, PDFs, Excel) — no structured ingestion",
+            "Forwards email chain to Broker Support informally — no structured handoff",
+            "Must manually request UMR creation, sanctions checks, and market security checks",
+            "Same data will be re-keyed into multiple systems/xls file"
+          ],
+          "stepsToday": 7,
+          "stepsFuture": 5
+        },
+        "support": {
+          "story": "James learns about Sarah’s new submission when she forwards an email chain and sends a Teams message saying ‘can you set this up?’ He opens the forwarded thread, hunts for attachments, and begins manually keying data into the Pipeline List .xls. He then cross-references with WIN, and starts entering data into OpenTWINS.",
+          "pains": [
+            "Learns about new submissions informally via forwarded email — no structured notification",
+            "Must review weekly Pipeline List .xls file to track work across brokers",
+            "Enters details into Pipeline List .xls manually — then re-keys same data into WIN and OpenTWINS",
+            "Creates UMR in OpenTWINS manually",
+            "Updates UMR in Pipeline List .xls after OpenTWINS creation — another manual update",
+            "No completeness checklist — relies on experience to know which fields matter",
+            "Stores ingestion data manually — documents scattered across email filing and shared drives"
+          ],
+          "stepsToday": 5,
+          "stepsFuture": 1
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "Sarah receives the renewal submission via Outlook. The Opportunity Pipeline in WIN triggers the renewal workflow automatically. She uploads the submission pack to the Workflow Engine, which intelligently ingests the data — extracting structured fields from PDFs and spreadsheets with rules-based validation. The system creates the placement case, populates WIN, flags any missing mandatory fields, and triggers CAT modelling if required. In few minutes the case is live, validated, and ready for compliance screening.",
+          "actions": [
+            "Initiate renewal discussions with Cedant",
+            "Receive submission pack via Outlook",
+            "Upload submission pack to Workflow Engine",
+            "Review and confirm intelligently ingested data",
+            "Request additional details from cedant (if required)"
+          ],
+          "automated": [
+            "Opportunity Pipeline in WIN triggers renewal workflow automatically — no more manual Pipeline List .xls",
+            "Auto-create placement case; assign case owner via routing rules",
+            "Intelligent Ingestion extracts structured data with rules-based validation, ensures completeness",
+            "Intelligent Ingestion stores data within Data Lake and DMS simultaneously",
+            "Validate completeness — flag missing mandatory fields",
+	          "Workflow routes placement to Modelling/Analytics if required",
+            "Auto-generate email with information request for Broker if data gaps found",
+            "Stage gate blocks progression until required data complete",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James receives a Workflow Engine notification that a new submission case has been auto-created. The intelligent ingestion has already extracted and validated the data. He opens the pre-populated validation checklist, confirms two low-confidence fields against the source PDF, and verifies the WIN link. No more Pipeline List .xls. No more re-keying into OT. Total time: 8 minutes.",
+          "actions": [
+            "Validate ingestion output against source submission documents",
+            "Update data fields where ingestion confidence is low"
+          ],
+          "automated": [
+            "Notification of new case assignment in Workflow Engine — replaces informal email/Teams",
+            "Pre-populated validation checklist based on product type — replaces tribal knowledge",
+            "Intelligent Ingestion stores data within Data Lake and DMS — replaces manual document filing",
+	    "Pipeline List .xls eliminated — Opportunity Pipeline lives in WIN with workflow triggers",
+            "Data sync between Workflow Engine, WIN, and OpenTWINS — no re-keying",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Cedant",
+          "ic": "📄",
+          "steps": [
+            "Prepare and send submission pack to Broker via Outlook",
+            "Provide requested details (if required)"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Risk",
+          "d": "In→Out",
+          "note": "Risk details ingested from submission pack (TIV, line of business, inception)"
+        },
+        {
+          "n": "Company (Client)",
+          "d": "In→Out",
+          "note": "Cedant details validated and enriched"
+        },
+        {
+          "n": "Organisation",
+          "d": "In→Out",
+          "note": "Organisational hierarchy confirmed"
+        },
+        {
+          "n": "Product",
+          "d": "In→Out",
+          "note": "Product type classification (property cat, etc.)"
+        },
+        {
+          "n": "Geography",
+          "d": "Output",
+          "note": "Location/territory data extracted from submission"
+        },
+        {
+          "n": "Contract",
+          "d": "Output",
+          "note": "Initial contract shell created"
+        },
+        {
+          "n": "Claims",
+          "d": "Output",
+          "note": "Loss/claims history data extracted from submission"
+        },
+        {
+          "n": "Currency",
+          "d": "Output",
+          "note": "Settlement and original currency captured"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Submission pack stored and indexed in DMS"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Cedant (Email)"
+        ],
+        "workflow": [
+          "WIN",
+          " Workbench",
+          "Intelligent Ingestion",
+	  "Workflow Engine"
+        ],
+        "consuming": [
+          "OpenTWINS",
+          "WIN",
+          " Workbench",
+          "Data Lake",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Compliance Screening",
+      "code": "WF-02",
+      "currentPain": {
+        "broker": {
+          "story": "Sarah needs sanctions clearance before she can market the risk. She sends an email to Broker Support asking them to ‘run the checks.’ Then she waits. If it goes AMBER, the email chain with the Sanctions team stretches over days. There’s no status.",
+          "pains": [
+            "Requests sanctions checks via email to Broker Support",
+            "No visibility into check status — relies on inbox monitoring and chasers",
+            "Sanctions clearance might delay market engagement",
+            "Must manually upload evidence and artefacts to e-filing and storage repository (GEM)",
+            "AMBER/RED outcomes trigger unstructured email chains with Sanctions team"
+          ],
+          "stepsToday": 2,
+          "stepsFuture": 1
+        },
+        "support": {
+          "story": "James receives Sarah’s email requesting checks. He manually conducts the sanctions check in SIT and downloads the report. If it comes back GREEN — but he still needs to upload evidence to e-filing, update the artefacts in the storage repository for GEM. If it's RED/AMBER — he has to complete an SRT record and chase the Sanctions Team. Similarly he has to complete Market Security screening in Guard and follow up with the Market Security Team for not approved Markets. It’s a very manual process with multiple GEM touchpoints and no structured workflow.",
+          "pains": [
+            "Manually conducts sanctions check in SIT and downloads report",
+            "If AMBER/RED: completes SRT record, forwards to Sanctions Team",
+            "Updates Sanctions compliance status in Pipeline List .xls — yet another manual update",
+            "Perform manually Market Security checks in Guard and engage with Market Security Team for not approved Markets.", 
+            "Email exchanges/follow up with Market Security Team",
+            "Uploads evidence to e-filing and artefacts into storage repository — manual GEM touchpoints"
+          ],
+          "stepsToday": 4,
+          "stepsFuture": 1
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "Sarah’s Workflow Engine dashboard shows a green tick — sanctions screening passed automatically. The evidence has been auto-documented for GEM. She didn’t send a single email or open a single additional system. If the case was AMBER/RED, the referral was auto-created in SRT and routed to the Sanctions Team with all context attached.",
+          "actions": [
+            "Review sanctions outcome (Human in the Loop) — if AMBER/RED"
+          ],
+          "automated": [
+            "Initiate sanctions screen against checklist via SIT automatically",
+            "Tri-state routing: GREEN → auto-pass; AMBER/RED → SRT referral",
+            "Auto-create referral in SRT for AMBER/RED outcomes",
+            "Document evidence and artefacts in accordance with GEM",
+            "Update Sanctions check status in the Opportunity Pipeline in WIN",           
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James sees the sanctions result auto-populated on his Workflow dashboard — GREEN for Sarah’s case. The evidence is already filed in DMS for GEM. For the AMBER case earlier, the workflow auto-created the SRT record and routed it to the Sanctions team with all context attached.",
+          "actions": [
+            "Review sanctions and request details from Broker if Sanctions review fails (if AMBER/RED)"
+          ],
+          "automated": [
+            "Sanctions check automated in SIT — no manual login, search, or download",
+            "SRT record auto-created for AMBER/RED with context attached",
+            "Workflow routes to Sanctions Team automatically with SLA timer",
+            "Evidence documented in GEM automatically — no manual upload",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS",
+            "Market Security screening automatically triggered/completed at Draft Slip Creation stage"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Sanctions Team",
+          "ic": "🛡️",
+          "steps": [
+            "Sanctions Review Process (structured workflow with SLA)",
+            "Receive auto-created SRT referral with full context (AMBER/RED only)",
+            "Resolution auto-updated in workflow"
+          ]
+        }       
+      ],
+      "dataDomains": [
+        {
+          "n": "Compliance/Sanctions",
+          "d": "In→Out",
+          "note": "Screening results, SRT records, evidence for GEM"
+        },
+        {
+          "n": "Company (Client)",
+          "d": "Input",
+          "note": "Cedant screened against sanctions lists"
+        },
+        {
+          "n": "Carriers",
+          "d": "Output",
+          "note": "Carriers sanctions compliance status"
+        },
+        {
+          "n": "Transaction",
+          "d": "Output",
+          "note": "UMR assigned, compliance status linked"
+        }        
+      ],
+      "systems": {
+        "supplier": [
+          " Workbench",
+          "WIN"
+        ],
+        "workflow": [
+          "SIT (Sanctions)",
+          "OpenTWINS",
+          " Workbench",
+          "Workflow Engine"
+        ],
+        "consuming": [
+          "WIN",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Marketing, Market Engagement & Evaluation",
+      "code": "WF-03",
+      "currentPain": {
+        "broker": {
+          "story": "Sanctions are clear. Sarah now needs to prepare marketing materials, engage markets, and evaluate responses — all manually. She opens a previous marketing email as a template, manually updates the risk details, and sends the submission to 6 target reinsurers via individual Outlook emails. Over the next hours, responses trickle in — some via email, some via phone. She tracks who has responded in a personal spreadsheet, compares quotes across emails and phone notes, and prepares a quote letter for the Cedant. If modelling was needed, she waits for Cat Analytics to return their output before sending the submsision pack to Market.",
+          "pains": [
+            "Manually prepares marketing email using previous emails as informal templates — no standardised communication pack",
+            "Manual email distribution to each market — no structured routing or Quote ID system",
+            "Tracks responses in personal spreadsheet — no unified view of market engagement",
+            "No automated reminders or deadline tracking for market responses",
+            "Negotiations tracked informally — in head and in inbox",
+            "Manual quote comparison across emails, spreadsheets, and phone notes",
+            "Waits for modelling output with no tracking of when it will arrive"
+          ],
+          "stepsToday": 6,
+          "stepsFuture": 5
+        },
+        "support": {
+          "story": "James doesn’t have a structured role in marketing or market engagement today — but he often gets pulled in ad-hoc to help format documents, chase modelling outputs, and check that the submission pack is complete. He has no visibility into which markets have responded, what terms are discussed, or whether cases are on track.",
+          "pains": [
+            "No structured task in marketing prep — pulled in ad-hoc by brokers",
+            "Chases Cat Analytics informally for modelling outputs",
+            "No visibility into market engagement status — learns about outcomes informally",
+            "Cannot prepare for next workflow stage proactively",
+            "No standardised ‘market-ready’ checklist"
+          ],
+          "stepsToday": 3,
+          "stepsFuture": 1
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "With sanctions compliance clear, the system has already determined whether modelling is needed and triggered the Cat Analytics workflow in parallel at case creation. The auto-populated communication pack is ready — pre-filled with risk details, terms, and the standard email template. Sarah reviews, adjusts, and sends. All emails include a workflow-generated Quote ID in the subject. Responses are tracked by the workflow: she can see at a glance who’s quoting, who’s declined. She focuses on negotiations — the one thing the workflow explicitly does not automate. She evaluates quotes, prepares a quote letter, and sends terms to the cedant.",
+          "actions": [
+            "Review and adjust auto-populated communication pack",
+            "Send marketing email and submission pack to Markets via Outlook",
+            "Conduct negotiations with Markets and Cedant (human-driven — not automated)",
+            "Evaluate quotes and terms across markets",
+            "Prepare quote letter and terms details; send to Cedant"
+          ],
+          "automated": [
+            "Route to Modelling/Analytics if required (parallel workflow triggered at case creation); store analytics outputs in DMS; update Pipeline in WIN",
+            "Auto-populate communication pack and standard email",
+            "Emails include workflow-generated Quote ID in subject",
+            "Store emails with Quote ID in DMS (Harmon.ie pop-up permission)",
+            "Track inbound market responses; classify (Accept / Decline)",
+            "Auto-send decline notifications to rejected markets",
+            "Maintain response timestamp and audit trail",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "For the first time, James has real-time visibility into marketing and market engagement. He can see on his Workflow dashboard which cases are in active negotiation, which have received quotes, and which are approaching firm order. He initiates Placement Structure preparation and confirms submission data in the Placement Tool.",
+          "actions": [
+            "Initiate Placement Structure preparation (Workbench)",
+            "Confirm submission data, populate market info (Placement Tool)",
+            "Prepare marketing email"
+          ],
+          "automated": [
+            "Communication pack auto-populated from submission data and templates",
+            "Modelling outputs auto-stored and associated with placement in DMS",
+            "Real-time visibility into market engagement status (new — previously invisible)",
+            "Quote ID tracking and email filing via DMS",
+            "Auto-notification when case transitions to next workflow stage",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Cat Analytics",
+          "ic": "📈",
+          "steps": [
+            "Perform Data Prep, run models and analyse results",
+            "Provide modelling output",
+            "Output auto-stored and linked to placement in DMS"
+          ]
+        },
+        {
+          "name": "Markets / Reinsurers",
+          "ic": "🏢",
+          "steps": [
+            "Order Review and Evaluation",
+            "Confirm Quote and Terms (or decline)"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Product",
+          "d": "Input",
+          "note": "Product parameters drive modelling and marketing needs"
+        },
+        {
+          "n": "Geography",
+          "d": "Input",
+          "note": "Location data for catastrophe modelling"
+        },
+        {
+          "n": "Quotes",
+          "d": "In→Out",
+          "note": "Market quotes captured, evaluated, and structured"
+        },
+        {
+          "n": "Structures",
+          "d": "In→Out",
+          "note": "Reinsurance structure modelled and presented"
+        },
+        {
+          "n": "Risk",
+          "d": "In→Out",
+          "note": "Risk data enriched with modelling outputs"
+        },
+        {
+          "n": "Exposure",
+          "d": "Output",
+          "note": "Exposure summaries from Modeler/Optimizer"
+        },
+        {
+          "n": "Company (Market)",
+          "d": "In→Out",
+          "note": "Market selection, engagement, response tracking"
+        },
+        {
+          "n": "Carriers",
+          "d": "In→Out",
+          "note": "Carrier participation and quote status"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Marketing pack and all market comms stored with Quote ID in DMS"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Workflow Engine",
+          "Guard"
+        ],
+        "workflow": [
+          "Modeler",
+          "Optimizer",
+          "Visualizer",
+          "Workbench",
+          "Contract Builder",
+          "WIN"
+        ],
+        "consuming": [
+          "PPL/Lloyd's",
+          "Email",
+          "Reinsurer",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "Pending Cedant Decision",
+      "code": "WF-04",
+      "currentPain": {
+        "broker": {
+          "story": "Quotes are in and Sarah has presented her recommendation to the cedant. Now she waits for confirmation. She tracks this informally — checking her inbox, making follow-up calls. Once the cedant confirms, she sends a ‘proceed’ email to Broker Support. If declined, she notifies markets manually. The handoff to Draft Slip is a forwarded email.",
+          "pains": [
+            "No structured tracking of cedant decision status — relies on inbox and memory",
+            "Must manually follow up with cedant for confirmation",
+            "Transition to Draft Slip is an email forward — no structured trigger",
+            "Pipeline .xls must be manually updated with outcome",
+            "No automated decline notifications to rejected markets if cedant declines"
+          ],
+          "stepsToday": 2,
+          "stepsFuture": 1
+        },
+        "support": {
+          "story": "James updates the Pipeline List .xls with the outcome, uploads evidence to the storage repository, and waits for the broker’s forwarded email telling him to initiate slip preparation. He has no visibility into when the cedant decision is expected.",
+          "pains": [
+            "Updates Pipeline .xls with outcome manually",
+            "Uploads evidence and artefacts to storage repository for GEM manually",
+            "Waits for broker email to initiate next stage — no structured trigger",
+            "No visibility into cedant decision timeline"
+          ],
+          "stepsToday": 0,
+          "stepsFuture": 0
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "Sarah receives the cedant’s confirmation via the workflow — or handles a decline. The system auto-generates structured communication templates. On confirmation, the workflow triggers transition to Draft Slip Creation automatically. All documentation is updated in WIN and DMS. No more manual Pipeline .xls updates.",
+          "actions": [
+            "Receive Confirmation to Proceed (or handle decline)",
+            "Notify Cedant — Term Agreed",
+            "Update Opportunity Pipeline in WIN and documentation in DMS"
+          ],
+          "automated": [
+            "Auto-generate structured communication templates for cedant",
+            "Attach quote letter / terms; log delivery + read confirmation",
+            "On confirmation: trigger transition to Draft Slip Creation",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "The moment Sarah’s cedant confirms, James receives an automatic notification with all case data pre-loaded. The workflow has already classified the case and all data flows into the next stage — no re-keying required.",
+          "actions": [
+            "Receive auto-notification of cedant decision",
+            "Confirm data completeness for transition"
+          ],
+          "automated": [
+            "Auto-notification when case transitions from Submission to Draft Slip",
+            "All submission data, quotes, compliance records carried forward — no re-keying",
+            "Pipeline .xls eliminated — all tracking in Workflow Engine and WIN",
+            "Evidence and artefacts auto-stored in DMS for GEM compliance"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Cedant",
+          "ic": "📄",
+          "steps": [
+            "Receive Quote and Terms Details",
+            "Accept Order? — decision to proceed or decline",
+            "Receive Notification of Declined Order (if applicable)"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Quotes",
+          "d": "In→Out",
+          "note": "Final agreed terms confirmed by cedant"
+        },
+        {
+          "n": "Company (Client)",
+          "d": "Input",
+          "note": "Cedant decision and communication"
+        },
+        {
+          "n": "Compliance/Sanctions",
+          "d": "Input",
+          "note": "Compliance status carried forward"
+        },
+        {
+          "n": "Transaction",
+          "d": "Output",
+          "note": "Transaction status updated on proceed"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "Output",
+          "note": "Cedant communications and decision records stored in DMS"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Reinsurer",
+          "PPL/Lloyd's",
+          "WIN"
+        ],
+        "workflow": [
+          "WIN",
+          "Workflow Engine"
+        ],
+        "consuming": [
+          "Workflow Engine",
+          "Workbench",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "Draft Slip Preparation & Review",
+      "code": "WF-05",
+      "currentPain": {
+        "broker": {
+          "story": "Sarah sends a ‘proceed’ email to Broker Support with instructions to start the draft slip. She has to specify whether it’s new business, renewal, or endorsement. When the draft arrives, she reviews it in Word — marking up changes, checking terms against her negotiation notes, and emailing feedback. If terms need amendment, the loop repeats. Version control relies on filenames and email dates.",
+          "pains": [
+            "Initiates draft slip via email forward — no structured trigger",
+            "Must manually specify new business/renewal/endorsement classification",
+            "References previous placements informally — no systematic template selection",
+            "Reviews draft slip in Word via email — no structured review workflow",
+            "Version control relies on filenames and email dates",
+            "Feedback loop between Broker and Broker Support is manual and slow",
+            "No digital signatures or approval capture"
+          ],
+          "stepsToday": 3,
+          "stepsFuture": 2
+        },
+        "support": {
+          "story": "James receives the email from Sarah and determines the classification. For renewal cases, he searches shared drives for last year’s slip, manually populates it with data from the submission. For new business cases, he checks pipeline list .xls for similar cases to create a first draft. In both cases, he sends the draft when ready by email to Sarah for review. When feedback comes back, he makes amendments and re-routes. Each iteration requires manual document management.",
+          "pains": [
+            "Receives initiation informally — must interpret broker’s email",
+            "Manually determines classification (new/renewal/endorsement)",
+            "Creates draft slip manually — pulling data from multiple sources",
+            "Uses previous slip as informal template — inconsistent quality",
+            "Document management is manual — filenames, storing, and email tracking",
+            "No audit trail of changes and approvals"
+          ],
+          "stepsToday": 5,
+          "stepsFuture": 2
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "The workflow has automatically classified Sarah’s case as a renewal and triggered the Draft Slip Creation workflow. The Contract Builder auto-generates a draft slip using the appropriate template with all submission data pre-populated. Sarah reviews it within the workflow — she can see tracked changes, comment inline, and approve directly. The system maintains version control and a full audit trail with GEM compliance auto-documented.",
+          "actions": [
+            "Initiate placement Structure preparation (Workbench)",
+            "Review and complete draft slip",
+            "Review Pass? — approve or request amendments"
+          ],
+          "automated": [
+            "Classify case: New Business / Renewal / Endorsement",
+            "Retrieve historical placement data (automated historical check)",
+            "Initiate Slip production: Contract Builder + Data Lake",
+            "Apply template logic based on classification",	          
+            "Cross-reference markets with approved list in Guard; document evidence",
+            "Route draft slip through review process; document records (GEM)",
+            "Capture digital approval; log audit trail",              
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James receives a structured workflow notification. The case is pre-classified as a renewal. He initiates the draft slip using Contract Builder and standard templates, with submission data pre-populated. Amendments are version-controlled with delta tracking. James also initiates/triggers Market Security screening via Guard. The workflow captures all outcomes and evidence automatically.",
+          "actions": [
+            "Prep Placement structure; bring in Submission data",
+            "Confirm submission data, populate market info (Placement Tool)",
+            "Create draft slip using Contract Builder and standard templates",
+            "Send Draft Slip for Review",
+            "Manage iterative amendments with version control and delta tracking",
+            "Initiate Market Security screen via Guard (if not already cleared)"
+          ],
+          "automated": [
+            "Structured notification replaces informal email initiation",
+            "Case classification auto-determined — no manual interpretation",
+            "Historical placement data pulled automatically for renewals",
+            "Route draft slip through review process and documents records with e-signature",
+            "GEM compliance touchpoint auto-recorded",
+            "Route Market Security review through Guard portal",
+            "Market Security results auto-documented from Guard",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Market Security",
+          "ic": "🔒",
+          "steps": [
+            "Market Security Review",
+            "If Market Security does not pass, follow Market Security procedure (outside FAC Team processes)",
+            "Outcome documented in workflow"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Product/Type",
+          "d": "Input",
+          "note": "Product type and transaction type (REN, NB, endorsement)drives template selection"
+        },
+        {
+          "n": "Transaction",
+          "d": "In→Out",
+          "note": "Transaction record created for slip stage"
+        },
+        {
+          "n": "Slip",
+          "d": "In→Out",
+          "note": "Draft slip generated and iterated via Contract Builder"
+        },
+        {
+          "n": "Quotes",
+          "d": "Input",
+          "note": "Agreed terms carried forward from evaluation"
+        },
+        {
+          "n": "Company (Market)",
+          "d": "Input",
+          "note": "Market selection confirmed from Market Security evaluation"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Draft slip versions stored with audit trail in DMS"
+        },
+        {
+          "n": "Structures",
+          "d": "Input",
+          "note": "Placement structure brought in from submission"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Workbench",
+          "WIN"
+        ],
+        "workflow": [
+          "Workflow Engine",
+          "Workbench",
+          "Contract Builder",
+          "Guard"
+        ],
+        "consuming": [
+          "Contract Builder",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "Draft Slip with Market",
+      "code": "WF-06",
+      "currentPain": {
+        "broker": {
+          "story": "Once the draft is internally approved, Sarah manually assembles the package/email to send to markets. She emails the draft slip to each market individually, then tracks their responses informally. If a market rejects the terms, she handles the declinature review manually and may need to loop back to the Cedant for material changes.If changes are required, Sarah emails Broker Support with the required updates. Further revisions handled via email exchanges.",
+          "pains": [
+            "Manually assembles market package from multiple document sources",
+            "Manual Contra-Sign of the draft-slip documentation",
+            "Tracks market feedback on draft terms informally",
+            "No structured dispatch process — emails sent individually",
+            "Declinature handling is unstructured",
+            "Material changes require manual Cedant communication",
+            "Changes/updates handled via email exchanges between Broker and Broker Support — no structured workflow"
+          ],
+          "stepsToday": 4,
+          "stepsFuture": 3
+        },
+        "support": {
+          "story": "James has limited visibility into the market dispatch process. He learns about market responses informally from the Broker and has no structured way to track whether markets have responded. If any changes are needed after market feedback, he waits for the broker to email him with instructions. He cannot prepare proactively for the next stage because he has no visibility into when market feedback will come or what it will be.",
+          "pains": [
+            "No visibility into market dispatch or response status",
+            "Learns about market feedback informally from Broker via email",
+            "No structured process for tracking draft slip responses",
+            "Cannot prepare proactively for next stage"
+          ],
+          "stepsToday": 1,
+          "stepsFuture": 1
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "The workflow automatically generates an outbound communication with the approved draft slip attached. Sarah triggers the dispatch via via PPL or email with tracked timestamps. Market responses and feedback are tracked centrally. If a market rejects, the declinature review process is structured. If material changes are requested by Markets, Sarah notifies Cedant and completes the necessary negotiations. Sarah instructs any required changes (material or not) to Broker Support.",
+          "actions": [
+            "Review communication package with Slip attached for market dispatch",
+            "Send prepared communication to Markets - trigger dispatch via PPL or email",
+            "Handle Declinature Review (if market rejects)",
+            "Notify/negotiate with Cedant if material changes requested by Markets",
+            "Instruct Broker Support of any required changes to slip (material or not)"
+          ],
+          "automated": [
+            "Generate outbound communication; attach approved draft",
+            "Dispatch via PPL or email; track timestamp",
+            "Track market response and feedback",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James can see the dispatch status and market responses on his dashboard. He has real-time visibility into which markets have responded and what their feedback is.",
+          "actions": [
+            "Monitor market response status on dashboard",
+            "Amend draft slip using Contract Builder based on broker instructions and market feedback"
+          ],
+          "automated": [
+            "Market dispatch tracked with timestamps",
+            "Response tracking centralised on Workflow dashboard",
+            "Auto-notification on market response"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Markets / Reinsurers",
+          "ic": "🏢",
+          "steps": [
+            "Review Draft Slip Terms",
+            "Agree Terms? — decision to accept or request changes"
+          ]
+        },
+        {
+          "name": "Cedant",
+          "ic": "📄",
+          "steps": [
+            "Review Material Changes (if any flagged)",
+            "Accept changes? — decision"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Contract",
+          "d": "In→Out",
+          "note": "Draft slip dispatched and market feedback captured"
+        },
+        {
+          "n": "Company (Market)",
+          "d": "In→Out",
+          "note": "Market confirmations tracked and documented"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Draft slip dispatched and responses tracked in DMS"
+        },
+        {
+          "n": "Quotes",
+          "d": "In→Out",
+          "note": "Terms under negotiation with markets"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Workbench"
+        ],
+        "workflow": [
+          "PPL/Lloyd's",
+          "Contract Builder",
+          "Email"
+        ],
+        "consuming": [
+          "Reinsurer",
+          "Cedant",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "name": "Firm Order Received",
+      "code": "WF-07",
+      "currentPain": {
+        "broker": {
+          "story": "When the Cedant confirms the firm order, Sarah manually notifies everyone and coordinates the transition to final slip production. She sends acknowledgement email to Cedant and updates her Pipeline .xls. The transition to Final Slip is another informal email handoff.",
+          "pains": [
+            "Firm order coordination is manual — emails and phone calls",
+            "Prepares firm order acknowledgement and sends to Cedant manually",
+            "Transition to Final Slip is another informal email handoff",
+            "Pipeline .xls must be updated with firm order status"
+          ],
+          "stepsToday": 1,
+          "stepsFuture": 1
+        },
+        "support": {
+          "story": "James does have visibility of Cedant's confirmation until Sarah informs him via email/phone call. He updates the Pipeline .xls with firm order status, and then needs to prepare for Final Slip creation — gathering all the finalised terms.",
+          "pains": [
+            "Prepares firm order acknowledgement manually",
+            "Updates Pipeline .xls with firm order status",
+            "Must re-gather terms data for Final Slip stage",
+            "No structured transition between Draft and Final Slip"
+          ],
+          "stepsToday": 0,
+          "stepsFuture": 0
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "The workflow captures the firm order agreement and automatically triggers the Final Slip workflow. Sarah receives the notification to proceed and issues acknowledgement to Cedant (acknoledgement doc/email prepared by the system) — all within the system. The transition is seamless.",
+          "actions": [
+            "Receive Notification to Proceed to Firm Order",
+            "Issue Firm Order Acknowledgement to Cedant"
+          ],
+          "automated": [
+            "Capture firm order agreement",
+            "Trigger Final Slip workflow automatically",
+            "Prepared cedant communication (acknowledgement) and dispatch (once triggered by Broker)",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James sees the firm order confirmation on his dashboard. The workflow has already initiated the Final Slip Creation stage. All approved terms and records flow into the next stage automatically.",
+          "actions": [
+            "Confirm readiness for Final Slip production"
+          ],
+          "automated": [
+            "Automated firm order trigger based on market agreement",
+            "Seamless transition to Final Slip workflow with all data carried forward",
+            "All terms, amendments, and market feedback carried forward"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Cedant",
+          "ic": "📄",
+          "steps": [
+            "Receive Notification to Proceed to Firm Order",
+            "Acknowledge Receipt of Proceed to Firm Order"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Transaction",
+          "d": "Output",
+          "note": "Firm order recorded, triggers Final Slip"
+        },
+        {
+          "n": "Contract",
+          "d": "In→Out",
+          "note": "Contract terms finalised for firm order"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "Output",
+          "note": "Firm order acknowledgement and cedant communication stored"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Reinsurer",
+          "PPL/Lloyd's"
+        ],
+        "workflow": [
+          "Workbench",
+          "Contract Builder"
+        ],
+        "consuming": [
+          "WIN",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "Final Slip Production & Review",
+      "code": "WF-08",
+      "currentPain": {
+        "broker": {
+          "story": "Sarah initiates final slip production by emailing Broker Support with the finalised terms. The Wording Team creates the final slip in Word. She then receives it for peer review — checking it against the draft, her negotiation notes, and the Cedant’s requirements. If changes are needed, she emails the Wording Team with markup. Amendment loops are slow and error-prone.",
+          "pains": [
+            "Initiates final slip production via email — no structured workflow",
+            "Must confirm all draft amendments are captured in final version",
+            "Final slip created in Word — disconnected from source data",
+            "Peer review conducted via email and Word markup — no structured approval chain",
+            "No digital signatures or approval capture",
+            "Amendment loops slow and error-prone"
+          ],
+          "stepsToday": 4,
+          "stepsFuture": 2
+        },
+        "support": {
+          "story": "James/Wording Team creates the final slip manually from the draft, incorporating final terms. He then coordinates the peer review, manages amendment requests, and tracks who has reviewed and approved. All done via email with no audit trail.",
+          "pains": [
+            "Creates final slip manually from draft — re-keying final terms",
+            "Must cross-reference draft amendments to ensure accuracy",
+            "Coordinates review via email — no structured routing",
+            "Tracks approvals manually — no audit trail",
+            "Amendment management is ad-hoc"
+          ],
+          "stepsToday": 1,
+          "stepsFuture": 1
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "Once Sarah confirm that firm order has been received, the workflow auto-initiates final slip production. The Digital Contract Builder generates the final slip from all agreed terms — pre-populated with the exact data from the negotiation. Sarah reviews it through a structured peer review process within Contract Builder, captures her approval digitally. If amendments are needed, the workflow routes it to the Wording Team for redrafting iterations with full audit trail.",
+          "actions": [
+            "Confirm firm order received, which triggers the final slip production",
+            "Final Slip Peer Review Check (Contract Builder)",
+            "Provide feedback directly within Contract Builder",
+            "Peer Review Pass? — approve or return for amendments",
+            "Advise of Amendments to the Slip (if needed)"
+          ],
+          "automated": [
+            "Auto-initiate final slip production",
+            "Generate final slip via Digital Contract Builder",
+            "Populate structured document from placement data",
+            "Manage redrafting iterations; preserve audit log",
+            "Route for structured peer review",
+            "Route to Wording Team if amendments are needed during structured peer review",
+            "Capture approval; slip review requires signature for GEM",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "The final slip is auto-generated by the Contract Builder using all agreed terms. James/Wording Team reviews the output, amends if needed, and routes for peer review and GEM compliance sign-off. Version control and audit trail are maintained automatically.",
+          "actions": [
+            "Create Final Slip using Contract Builder",
+            "Amend Slip (Contract Builder)",
+            "Final Slip Peer Review Check (GEM compliance touchpoint)",
+            "Route for review and document signatures (GEM)"
+          ],
+          "automated": [
+            "Final slip auto-generated from Contract Builder using agreed terms",
+            "All prior data carried forward — eliminates re-keying",
+            "Version-controlled amendments with tracked changes",
+            "Structured peer review routing with digital signatures",
+            "GEM compliance auto-documented throughout review process"
+          ]
+        }
+      },
+      "otherPerformers": [],
+      "dataDomains": [
+        {
+          "n": "Slip",
+          "d": "In→Out",
+          "note": "Final slip generated, reviewed, and amended. Ready for market dispatch"
+        },
+        {
+          "n": "Quotes",
+          "d": "Input",
+          "note": "Finalised quotes and terms populated into slip"
+        },
+        {
+          "n": "Company (Market)",
+          "d": "Input",
+          "note": "Market participation details confirmed"
+        },
+        {
+          "n": "Cedant", 
+          "d": "Input",
+          "note": "Cedant details for final slip"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Final slip versions, review comments, approvals tracked"
+        },
+        {
+          "n": "Organisation",
+          "d": "Input",
+          "note": "Signatory requirements for approval chain"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Workbench"
+        ],
+        "workflow": [
+          "Contract Builder",
+          "Workbench"
+        ],
+        "consuming": [
+          "Workflow Engine",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "name": "Final Slip with Market / Signing",
+      "code": "WF-09",
+      "currentPain": {
+        "broker": {
+          "story": "Sarah sends the final slip to markets for signing — via PPL for Lloyd’s markets, via email for others. She manually tracks who has signed. If a market rejects at this stage, she handles the declinature review informally (emails, her personal notes). Signatures are tracked in her inbox.",
+          "pains": [
+            "Sends final slip to markets manually — via PPL or email",
+            "Tracks signatures informally — no unified status view",
+            "Declinature handling is unstructured at this late stage",
+            "No real-time visibility into signing progress across markets"
+          ],
+          "stepsToday": 3,
+          "stepsFuture": 2
+        },
+        "support": {
+          "story": "James helps with ad-hoc requests/tasks from Sarah. He could help to ease the process by loading the final slip onto PPL, tracking outstanding signatures, and managing the filing of documents. He learns about signing status informally.",
+          "pains": [
+            "Tracks signatures across markets manually",
+            "Loads final slip for PPL signing manually",
+            "Files signing-related documents manually",
+            "No structured process for tracking signing status"
+          ],
+          "stepsToday": 0,
+          "stepsFuture": 0
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "Sarah triggers the workflwo to route the final slip to markets via PPL (for Lloyd’s markets) or email communication for non-PPL markets. The system has prepared the communication package for Sarah's validation. Signing status is tracked on the dashboard — Negotiate/Reject/Agreed in real-time. PPL workflow integrates directly with the GRe workflow.",
+          "actions": [
+            "Trigger dispatch of Final Slip to Markets",
+            "Handle Declinature Review (if market rejects)",
+            "Track market signing status (Negotiate / Reject / Agreed)"
+          ],
+          "automated": [
+            "Route slip/package to PPL or prepare Outlook communication",
+            "PPL workflow integration with GRe workflow",
+            "Track market signing status automatically",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James follows the status in dashboard. Signing status is tracked automatically across all channels. He could help Sarah with ad-hoc tasks.",
+          "actions": [
+            "Follow signing status on dashboard"
+          ],
+          "automated": [
+            "Signing tracked automatically across PPL and email channels",
+            "Real-time status visibility on Workflow dashboard"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Markets / Reinsurers",
+          "ic": "🏢",
+          "steps": [
+            "Receive Final Slip for Review and Signing",
+            "PPL Status: Negotiate / Reject / Agreed",
+            "Sign and return Final Slip via Outlook or PPL"
+          ]
+        },
+        {
+          "name": "Cedant",
+          "ic": "📄",
+          "steps": [
+            "Declinature Review (if applicable)"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Slip",
+          "d": "In→Out",
+          "note": "Final slip dispatched for market signing"
+        },
+        {
+          "n": "Company (Market)",
+          "d": "In→Out",
+          "note": "Market signatures tracked and recorded"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Signed slip tracked via PPL and email"
+        },
+        {
+          "n": "Transaction",
+          "d": "In→Out",
+          "note": "Transaction status updated with signing progress"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Workbench"        
+        ],
+        "workflow": [
+          "PPL/Lloyd's",
+          "email",
+          "Contract Builder"
+        ],
+        "consuming": [
+          "PPL/Lloyd's",
+          "Reinsurers",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "name": "Binding Confirmed",
+      "code": "WF-10",
+      "currentPain": {
+        "broker": {
+          "story": "Once all signatures are in, Sarah downloads the signed slip, saves it to e-filing, creates a Cedant version manually, and sends it to the Cedant via email. She must remember to start the Post Bind checklist — there’s no automated trigger.",
+          "pains": [
+            "Downloads and saves signed slips manually to e-filing",
+            "Creates Cedant version manually",
+            "Sends final slip to Cedant manually via email",
+            "No automated post-bind trigger — must remember to start Post Bind checklist"
+          ],
+          "stepsToday": 2,
+          "stepsFuture": 1
+        },
+        "support": {
+          "story": "James is informed informally (email/call) that all signatures are in. He could help Sarah with ad-hoc tasks (e.g., filing). The transition to Post Bind is another manual step that he needs to coordinate with the Broker.",
+          "pains": [
+            "No visibility into signing completion — relies on broker communication",
+            "Must manually trigger Post Bind stage",
+            "No automated document archival"
+          ],
+          "stepsToday": 0,
+          "stepsFuture": 0
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "Once all signatures are in, the workflow auto-saves all documents, generates the Cedant version, and prepares a draft email for Sarah to send to the Cedant and confirms binding. The Post Bind stage is triggered seamlessly.",
+          "actions": [
+            "Validate that all signatures have been received",
+            "Send email to Cedant (drafted by system) with final slip attached and binding confirmation"            
+          ],
+          "automated": [
+            "Store final artefacts; sync DMS and Data Lake",
+            "Generate notification emails and route to Post Bind",
+            "Initiate Post Bind stage trigger automatically",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "The workflow handles document archival, cedant version creation, and Post Bind trigger automatically. James confirms the binding is complete and all documents are in order.",
+          "actions": [
+            "Confirm binding and document completeness"
+          ],
+          "automated": [
+            "Signed slip auto-archived in DMS",
+            "Cedant version auto-generated",
+            "Post Bind workflow triggered automatically on completion",
+            "All documentation synced to DMS and Data Lake"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Cedant",
+          "ic": "📄",
+          "steps": [
+            "Receive Final Slip for Records"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Slip",
+          "d": "In→Out",
+          "note": "Final signed contract captured and archived"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "Output",
+          "note": "Signed slip archived, cedant version created and dispatched"
+        },
+        {
+          "n": "Transaction",
+          "d": "Output",
+          "note": "Transaction finalised, triggers Post Bind"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "PPL/Lloyd's",
+          "email"
+        ],
+        "workflow": [
+          "Workbench",
+          "DMS"
+        ],
+        "consuming": [
+          "Cedant (Email)",
+          "DMS",
+          "Data Lake",
+          "OpenTWINS"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "name": "Post Bind Validation",
+      "code": "WF-11",
+      "currentPain": {
+        "broker": {
+          "story": "After binding, Sarah has minimal direct involvement in post-bind validation — but she needs to ensure the Post Bind checklist is covered. She relies on Broker Support to verify that all evidence is filed and GEM compliance touchpoints are complete.",
+          "pains": [
+            "Must verify all evidence is filed correctly for GEM",
+            "No automated check against documentation generated throughout the process",
+            "Missing documents trigger manual chasers"
+          ],
+          "stepsToday": 0,
+          "stepsFuture": 0
+        },
+        "support": {
+          "story": "James manually cross-references the checklist against saved documentation, updates evidence to e-filing, and completes the Post Bind checklist for GEM. If documents are missing, he chases the broker. He emails Global FAC Processing with final slip and all necessary documents.",
+          "pains": [
+            "Updates evidence to e-filing manually",
+            "Completes Post Bind checklist manually (GEM)",
+            "Chases missing documents via email",
+            "No automated check against documentation generated throughout the process",
+            "Manual notification (email) to Global FAC Processing, no automatic routing"
+          ],
+          "stepsToday": 3,
+          "stepsFuture": 1
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "The workflow automatically cross-references the Post Bind checklist with all documentation generated throughout the placement process. GEM compliance is auto-verified. Sarah reviews if necessary but most items are already confirmed green.",
+          "actions": [
+            "Review if necessary"
+          ],
+          "automated": [
+            "Check Post Bind checklist against saved documentation and evidence (GEM)",
+            "Cross-reference checklist with docs generated throughout process",
+            "Confirm upload of all evidence",
+            "Log evidence and validate completeness",
+            "Automatic notification to Global FAC Processing (all necessary documents tagged with UMR available in DMS)",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James accesses reviews the Post Bind Checklist, which is mostly auto-completed — the workflow has already verified that all required documents were saved during earlier stages. He reviews, confirms, and completes the GEM compliance touchpoint.",
+          "actions": [
+            "Access Final Slip and all necessary documents",
+            "Review Post Bind Checklist (GEM compliance touchpoint)"            
+          ],
+          "automated": [
+            "Post Bind checklist auto-populated from documents saved throughout placement",
+            "Cross-reference checklist with documentation generated throughout process",
+            "Confirm upload of all evidence automatically",
+            "Log evidence and validate completeness (update evidence to E-Filing)",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        }
+      },
+      "otherPerformers": [],
+      "dataDomains": [
+        {
+          "n": "Slip",
+          "d": "Input",
+          "note": "Final contract validated against checklist"
+        },
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Post Bind artefacts validated for GEM"
+        },        
+        {
+          "n": "Organisation",
+          "d": "Input",
+          "note": "Post Bind Checklist requirements"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Workbench"
+        ],
+        "workflow": [
+          "DMS",
+          "Contract Builder"
+        ],
+        "consuming": [
+          "Workbench",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "name": "Post Bind Review & Dispatch",
+      "code": "WF-12",
+      "currentPain": {
+        "broker": {
+          "story": "Sarah receives final Post Bind artefacts (Final slip, evidence of cover and debit notes) from Broker Support for her final review. If the review is successful, she sends the final Post Bind artefacts to Cedant via email. The review process is informal — approvals tracked via email, no structured sign-off.",
+          "pains": [
+            "Review and sign-off is informal",
+            "Sends Post Bind artefacts to Cedant manually via email",
+            "No structured approval chain"
+          ],
+          "stepsToday": 1,
+          "stepsFuture": 1
+        },
+        "support": {
+          "story": "James coordinates the Second Pair Of Eyes (SPOE) review, manages amendments if the review fails, and sends artefacts to the Broker for final review and dispatch to Cedant. He also coordinates the GEM review and ensures all sign-offs are captured — all via email.",
+          "pains": [
+            "Coordinates SPOE review informally via email",
+            "Routes amendments manually if review fails",
+            "Dispatches artefacts to cedant manually",
+            "Captures sign-offs manually — no digital audit trail"
+          ],
+          "stepsToday": 6,
+          "stepsFuture": 2
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "The workflow routes Post Bind artefacts for SPOE Review with structured sign-off. Sarah reviews and approves on her dashboard. On approval, the workflow prepares draft email with the artefacts for Sarah to send to the Cedant.",
+          "actions": [
+            "Access and Review Post Bind Artefacts",
+            "Broker Review Pass? — approve or return",
+            "Send Post Bind Artefacts to Cedant"
+          ],
+          "automated": [
+            "Route Post Bind Artefacts for SPOE Review and log signatures",
+            "Workflow routing and signature checkpoint for SPOE",
+            "Workflow routing with sign-off from Broker",
+            "Draft communication to Cedant with Post Bind artefacts",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "James sends artefacts for SPOE review through the workflow. Reviews are routed automatically with digital sign-off. If the review fails, amendments are routed back through the structured workflow. On approval, artefacts are dispatched to the cedant.",
+          "actions": [
+            "Send Post Bind Artefacts for SPOE Review",
+            "Broker Support Review Pass? — approve or route for amendment",
+            "Send Post Bind Artefacts for Amendment (if review fails)",
+            "Receive and Review Post Bind Artefacts (GEM)"
+          ],
+          "automated": [
+            "Structured SPOE review routing with digital sign-off",
+            "Amendment routing through workflow if review fails",
+            "Auto-dispatch to cedant on approval",
+            "GEM compliance auto-verified from earlier workflow stages"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Cedant",
+          "ic": "📄",
+          "steps": [
+            "Receive Post Bind Artefacts"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Document/Correspondence",
+          "d": "In→Out",
+          "note": "Post Bind artefacts reviewed, approved, and dispatched to cedant"
+        },
+        {
+          "n": "Contract/Slip",
+          "d": "Input",
+          "note": "Contract details verified in post-bind review"
+        },
+        {
+          "n": "Company (Client)",
+          "d": "Input",
+          "note": "Cedant communication details for dispatch"
+        },
+        {
+          "n": "Compliance/Sanctions",
+          "d": "Input",
+          "note": "Compliance evidence confirmed for GEM sign-off"
+        },
+        {
+          "n": "Organisation",
+          "d": "Input",
+          "note": "SPOE signatory requirements"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "WIN",
+          "Workbench"
+        ],
+        "workflow": [
+          "Contract Builder",
+          "DMS"
+        ],
+        "consuming": [
+          "Cedant (Email)",
+          "DMS"
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "name": "Transition to Servicing",
+      "code": "WF-13",
+      "currentPain": {
+        "broker": {
+          "story": "Sarah has to ensure the transiction to Post Placement Processing although she has minimum involvement. The transition to post-placement processing is another informal handoff.",
+          "pains": [
+            "No automated trigger for post-placement processing"
+          ],
+          "stepsToday": 0,
+          "stepsFuture": 0
+        },
+        "support": {
+          "story": "James coordinates the final handoff to Post Placement Processing, he manually triggers the transition to post-placement processing and updates all tracking systems.",
+          "pains": [
+            "Coordinates handoff to Global Fac Processing manually",
+            "Must ensure all systems are updated for post-placement",
+            "No automated trigger for premium processing workflow",
+            "Final status updates across multiple systems"
+          ],
+          "stepsToday": 1,
+          "stepsFuture": 0
+        }
+      },
+      "futureState": {
+        "broker": {
+          "story": "The transition to post-placement processing happens seamlessly. Global Fac Processing receives automatic access to all documents. Transaction preparation is triggered automatically. The placement lifecycle is complete.",
+          "actions": [
+            "Confirm placement complete (workflow-assisted)"
+          ],
+          "automated": [
+            "Route workflow to FAC Processing / Premium Processing",
+            "Trigger downstream processing; sync artefacts to systems",
+            "All documentation available in DMS and data linked to OpenTWINS",
+            "All emails associated with a Submission/Placement (e.g., tagged with UMR) will be auto-stored within appropriate folder within DMS"
+          ]
+        },
+        "support": {
+          "story": "The workflow handles the transition automatically. Global Fac Processing has already been notified and has access to everything they need. The transition to premium processing is automatic. The placement is complete.",
+          "actions": [
+            "Confirm transition on dashboard"
+          ],
+          "automated": [
+            "Workflow triggers post-placement processing automatically",
+            "All documents synced to DMS and OT for Global Fac Processing",
+            "Premium processing workflow auto-initiated",
+            "GEM Policy Touchpoint auto-updated at final milestone"
+          ]
+        }
+      },
+      "otherPerformers": [
+        {
+          "name": "Global Fac Processing",
+          "ic": "⚙️",
+          "steps": [
+            "Receive .pdf Final Slip and all necessary documents - stored in DMS",
+            "Upload Final Slip to OpenTWINS",
+            "Create Evidence of Cover",
+            "Create Debit Notes (Invoices)",
+            "Initiate Transaction Preparation Process"
+          ]
+        }
+      ],
+      "dataDomains": [
+        {
+          "n": "Document/Correspondence",
+          "d": "Output",
+          "note": "All placement documentation transitioned to servicing"
+        },
+        {
+          "n": "Contract/Slip",
+          "d": "Input",
+          "note": "Contract details forwarded to processing"
+        },
+        {
+          "n": "Ledger",
+          "d": "Output",
+          "note": "Ledger entries initiated for premium processing"
+        },
+        {
+          "n": "Transaction",
+          "d": "Output",
+          "note": "Transaction finalised, ready for premium processing"
+        },
+        {
+          "n": "Currency",
+          "d": "Input",
+          "note": "Settlement currency confirmed for processing"
+        }
+      ],
+      "systems": {
+        "supplier": [
+          "Workbench"
+        ],
+        "workflow": [
+          "Workbench",
+          "DMS"
+        ],
+        "consuming": [
+          "OpenTWINS",
+          "Cedant (Email)"
+        ]
+      }
+    }
+  ]
+}
