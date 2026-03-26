@@ -72,7 +72,7 @@
       "code": "WF-01",
       "currentPain": {
         "broker": {
-          "story": "Sarah opens an email from her cedant with a renewal submission -  a PDF, two spreadsheets, and a loss history screenshot pasted into the email body. She opens WIN to check the opportunity pipeline, then switches to the team's Pipeline List .xls to enter details, then back to email to forward everything to Broker Support. She saves the email in her email filing structure. If modelling was needed, she triggers the request to the modeling team and have to wait for Cat Analytics to return their output, then manually saves the modelling files alongside the submission. Plenty of admin time, zero broking.",
+          "story": "Sarah opens an email from her cedant with a renewal submission - a PDF, two spreadsheets, and a loss history screenshot pasted into the email body. She opens the team's Pipeline List .xls to enter details, then back to email to forward everything to Broker Support. She saves the email in her email filing structure. If modelling was needed, she triggers the request to the modeling team and have to wait for Cat Analytics to return their output, then manually saves the modelling files alongside the submission. Plenty of admin time, zero broking.",
           "pains": [
             "Manual data entry into personal Pipeline List .xls tracker — disconnected from WIN",
             "Weekly review of Pipeline List .xls to track submissions — no real-time visibility",
@@ -205,10 +205,8 @@
 	  "Workflow Engine"
         ],
         "consuming": [
-          "OpenTWINS",
           "WIN",
           " Workbench",
-          "Data Lake",
           "DMS"
         ]
       }
