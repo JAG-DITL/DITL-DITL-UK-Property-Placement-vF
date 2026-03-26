@@ -3,7 +3,6 @@
     "org": "Gallagher Re · Fac Technology Transformation",
     "title": "A Day in the Life: UK Property Placement",
     "subtitle": "Walk through each of the 13 workflow stages from your perspective — from case creation through transition to servicing. See today’s pain, the future experience, what you do, what’s automated, and how data flows across the end-to-end placement lifecycle.",
-    "facilitationGuide": "For each stage: (1) Start with 🔴 Today’s Reality — validate the pain points. (2) Switch to 🟢 Future Experience — is this the right vision? (3) Review ✋ My Actions — what’s missing? (4) Check ⚡ Workflow Automates — is the automation level right? (5) Review 📊 Data Domains and 🖥️ Systems — are these correct? Use 👥 Other Performers to confirm team interactions.",
     "sourceData": "Current-state step counts from Gallagher program context. Future-state from UK Property Placement Future State V2 process maps, E2E Workflow Stage Diagrams, and Workflow Engine Proposed Stages (13-stage model, March 2026). Data domains from Data Flow End to End workbook (Sheet 2: UK Property Placement). Systems from As-Is Redesign and Future State diagrams. Process step counts based on Future State and Redesign process maps (not based on detailed tasks)."
   },
   "personas": {
